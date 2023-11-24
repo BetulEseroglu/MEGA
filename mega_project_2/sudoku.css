@@ -1,0 +1,45 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+  background-color: #ECF4D6;
+}
+
+.sudoku-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #000;
+  text-align: center;
+  line-height: 40px; /* Yüksekliğinize uygun olarak ayarlayabilirsiniz */
+  font-size: 16px;
+  overflow: hidden;
+}
+
+
+/* 3. ve 6. sütunun sonuna çizgi ekleme */
+
+.sudoku-grid > :nth-child(3)::after,
+.sudoku-grid > :nth-child(6)::after,
+.sudoku-grid > :nth-child(9)::after {
+  content: "";
+  display: block;
+  height: calc(100% + 2px); /* yükseklik artırma */
+  border-right: 2px solid #000;
+  margin-top: -1px; /* sınırlar arasındaki boşluğu düzeltme */
+}
+
+
+.sudoku-grid > :nth-child(1)::after {
+  content: "";
+  display: block;
+  height: calc(100% + 2px); /* yükseklik artırma */
+  border-left: 2px solid #000;
+  margin-top: -1px; /* sınırlar arasındaki boşluğu düzeltme */
+}
