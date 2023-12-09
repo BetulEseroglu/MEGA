@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Photo Gallery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #ffffb5; background-image: linear-gradient(315deg, #ffffb5 0%, #247ba0 74%);;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        .photo {
+            margin-bottom: 20px;
+        }
+        .photo img {
+            width: 400px;
+            height: 300px;
+            margin-bottom: 10px; /* Alt boşluk */
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #343a40;
+            color: white;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 100px;
+            padding: 20px;
+            background-color: #343a40;
+            color: white;
+        }
+        button {
+            
+            display: inline-block;
+                    outline: none;
+                    cursor: pointer;
+                    font-size: 14px;
+                    line-height: 1;
+                    border-radius: 500px;
+                    transition-property: background-color,border-color,color,box-shadow,filter;
+                    transition-duration: .3s;
+                    border: 1px solid transparent;
+                    letter-spacing: 2px;
+                    min-width: 160px;
+                    text-transform: uppercase;
+                    white-space: normal;
+                    font-weight: 700;
+                    text-align: center;
+                    padding: 16px 14px 18px;
+                    color: #fff;
+                    background-color: #007d69;
+                    height: 48px;
+                    :hover{
+                        background-color: #1db954;
+                    }
+                
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1> Random Photo Gallery</h1>
+        <button onclick="reloadPage()">Click to change photos</button>
+    </header>
+
+    <div class="container">
+        <div class="row photo" id="photo-gallery">
+            <!-- Fotoğraflar buraya eklenecek -->
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2023 Betül's Random Photo Gallery</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        function getRandomPhoto() {
+            var randomNum = Math.floor(Math.random() * 1000);
+            var photoURL = "https://source.unsplash.com/random/400x300?sig=" + randomNum;
+            
+            var img = document.createElement("img");
+            img.src = photoURL;
+            img.classList.add("img-fluid");
+
+            var photoGallery = document.getElementById("photo-gallery");
+            var col = document.createElement("div");
+            col.classList.add("col-md-4");
+            col.classList.add("photo");
+            col.appendChild(img);
+            photoGallery.appendChild(col);
+        }
+
+        function reloadPage() {
+            location.reload();
+        }
+
+        window.onload = function() {
+            for (var i = 0; i < 18; i++) {
+                getRandomPhoto();
+            }
+        };
+    </script>
+</body>
+</html>
